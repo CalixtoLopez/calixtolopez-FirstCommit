@@ -1,16 +1,16 @@
 body {
-  background-color: #69696960;
+  background-color: #17171717;
 }
 
 .container {
   width: 100%;
   max-width: 600px;
-  background: #69696960;
+  background: #17171717;
   padding: 40px;
-  color: #69696960;
+  color: #fff;
   text-align: center;
   margin: 35px auto;
-  box-shadow: 3px 3px 15px #ccc;
+  box-shadow: 3px 3px 15px #fff;
 }
 .container h1 {
   font-size: 7em;

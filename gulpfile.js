@@ -4,6 +4,8 @@ const gulp = require('gulp');
 //const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass')(require('sass'));
+const concat = require('gulp-concat');
+const { watch } = require('gulp');
 
 //logs message
 gulp.task('message',async function(){
@@ -42,11 +44,38 @@ gulp.task('minify', async function(){
 
 // Compile Sass
 gulp.task('sass', async function(){
-  gulp.src('sass/*.sass')
-    .pipe(sass().on('error', sass.logError) )
+  gulp.src('sass/*.sass') //tambien lo podemos realizar con scss
+    .pipe(sass().on('error', sass.logError) ) 
     .pipe(gulp.dest('dist/css'));
 });
-//defaulp  gulp
-gulp.task('default',async function(){
-  return console.log('Gulp is running');
+
+// Scripts  ==> con la funcion concat unifica todos los archivos js en uno por ejemplo main.js
+gulp.task('scripts', async function(){
+  gulp.src('src/js/*.js')
+  .pipe(concat('main.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest('dist/js'));
 });
+
+//defaulp  gulp
+gulp.task('default', gulp.series('message', 'copyHtml', 'minify','sass', 'scripts'));
+
+// Wacth
+
+gulp.task('watch',  function(){
+  gulp.watch('src/js/*.js',['scripts']);
+  gulp.watch('sass/*.scss',['sass']);
+  gulp.watch('*.html',['copyHtml']);
+});
+
+
+
+/** 
+gulp.task('default',async function(){
+
+  return console.log('Gulp is running');
+} 
+/**
+podemos eliminar la funcion ===> async function(){} por ==>> gulp.task('default', ['message', 'copyHtml', 'minify','sass', 'scripts]);
+*/
+//);
