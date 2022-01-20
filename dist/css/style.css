@@ -1,0 +1,23 @@
+body {
+  background-color: #69696960;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  background: #69696960;
+  padding: 40px;
+  color: #69696960;
+  text-align: center;
+  margin: 35px auto;
+  box-shadow: 3px 3px 15px #ccc;
+}
+.container h1 {
+  font-size: 7em;
+  font-weight: bold;
+}
+.container p {
+  font-size: 2em;
+  margin-top: 25px;
+  line-height: normal;
+}
